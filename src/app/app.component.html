@@ -4,7 +4,8 @@
 <courses></courses>
 <p>{{body | resume}}</p> -->
 <!-- <star></star> -->
-<app-panel>
+<!-- ex panel-->
+<!-- <app-panel>
     <div class="header">header</div>
     <div class="body">
         <h3>
@@ -12,4 +13,23 @@
         </h3>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam voluptatem distinctio minus maiores assumenda laborum qui tempore odit nostrum repellendus perspiciatis earum quisquam sequi consequuntur quis ipsam, delectus maxime unde.</p>
     </div>
-</app-panel>
+</app-panel> -->
+<ul class="nav nav-pills">
+    <li class="nav-link active" [class.active]="viewCourse == 'Laravel'">
+        <a  (click)="viewCourse='Laravel'">Laravel</a>
+    </li>
+    <li class="nav-link" [class.active]="viewCourse == 'Angular'">
+        <a  (click)="viewCourse='Angular'">Angular</a>
+    </li>
+
+    <li class="nav-link" [class.active]="viewCourse == 'Symfony'">
+        <a  (click)="viewCourse='Symfony'">Symfony</a>
+    </li>
+    
+</ul>
+<div [ngSwitch]="viewCourse">
+    <div *ngSwitchCase="'Laravel'">lorem Laravel</div>
+    <div *ngSwitchCase="'Angular'">lorem Angular</div>
+    <div *ngSwitchCase="'Symfony'">lorem Symfony</div>
+    <div *ngSwitchDefault>other value</div>
+</div>
