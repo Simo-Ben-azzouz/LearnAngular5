@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './panel.component.css'
 })
 export class PanelComponent {
-
+  list : any = ['a','b','c']
 }
