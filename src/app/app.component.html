@@ -14,7 +14,8 @@
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam voluptatem distinctio minus maiores assumenda laborum qui tempore odit nostrum repellendus perspiciatis earum quisquam sequi consequuntur quis ipsam, delectus maxime unde.</p>
     </div>
 </app-panel> -->
-<ul class="nav nav-pills">
+<!-- exercice ngSwitch -->
+<!-- <ul class="nav nav-pills">
     <li class="nav-link active" [class.active]="viewCourse == 'Laravel'">
         <a  (click)="viewCourse='Laravel'">Laravel</a>
     </li>
@@ -32,4 +33,11 @@
     <div *ngSwitchCase="'Angular'">lorem Angular</div>
     <div *ngSwitchCase="'Symfony'">lorem Symfony</div>
     <div *ngSwitchDefault>other value</div>
-</div>
+</div> -->
+<button class="btn btn-success" (click)="addCourse()">Ajouter</button>
+<ul>
+    <li *ngFor="let course of courses">
+        {{course.id}} {{course.title}}
+        <button class="btn btn-danger" (click)="removeCourse(course)">Delete</button>
+    </li>
+</ul>
