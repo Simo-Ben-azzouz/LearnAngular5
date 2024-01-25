@@ -10,6 +10,8 @@ import { CoursesSevice } from './courses.service';
 import { ResumePipe } from './resume.pipe';
 import { StarComponent } from './star.component';
 import { PanelComponent } from './panel/panel.component';
+import { TestDerectiveDirective } from './test-derective.directive';
+import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { PanelComponent } from './panel/panel.component';
     CoursComponent,
     StarComponent,
     ResumePipe,
-    PanelComponent
+    PanelComponent,
+    TestDerectiveDirective,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

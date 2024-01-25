@@ -1,0 +1,27 @@
+<form action="">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input required ngModel name="firstName" maxlength="10" minlength="3" pattern="[a-zA-Z]+" #firstName="ngModel" (change)="log(firstName)" class="form-control" id="firstName" type="text">
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.hasError('required')">champ obligatoire.</div>
+            <div *ngIf="firstName.hasError('minlength')">Minimum doit être au mois caractères.</div>
+            <div *ngIf="firstName.hasError('maxlength')">Maximum doit être 10 caractères.</div>
+            <div *ngIf="firstName.hasError('pattern')">Le prénom doit contenir uniquement des lettres alphabétiques.</div>
+          </div>
+          
+        
+
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input ngModel name="lastName" #lastName class="form-control" id="lastName" type="text">
+    </div>
+
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea ngModel name="comment" #comment class="form-control" id="comment"></textarea>
+    </div>
+
+    <button class="btn btn-primary">Enregister</button>
+</form>
