@@ -34,9 +34,11 @@
     <div *ngSwitchCase="'Symfony'">lorem Symfony</div>
     <div *ngSwitchDefault>other value</div>
 </div> -->
+<button class="btn btn-primary" (click)="loadCourse()">Load</button>
 <button class="btn btn-success" (click)="addCourse()">Ajouter</button>
+
 <ul>
-    <li *ngFor="let course of courses">
+    <li *ngFor="let course of courses; TrackBy:trackCourse">
         {{course.id}} {{course.title}}
         <button class="btn btn-danger" (click)="removeCourse(course)">Delete</button>
     </li>
