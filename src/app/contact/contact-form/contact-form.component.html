@@ -1,5 +1,6 @@
 <form #f = "ngForm" (ngSubmit)="submit(f)">
-    <div class="form-group">
+    <div ngModelGroup="contact">
+            <div class="form-group">
         <label for="firstName">First Name</label>
         <input
             required
@@ -38,6 +39,8 @@
             id="lastName"
             type="text"
         >
+    </div>
+
     </div>
 
     <div class="form-group">

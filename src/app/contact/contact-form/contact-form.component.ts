@@ -13,7 +13,7 @@ console.log(x);
 }
 submit (f:any)
 {
-  console.log(f.value.firstName);
+  console.log(f.value);
   
 }
 }
