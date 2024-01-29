@@ -13,6 +13,8 @@ import { PanelComponent } from './panel/panel.component';
 import { TestDerectiveDirective } from './test-derective.directive';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,17 +26,19 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     PanelComponent,
     TestDerectiveDirective,
     ContactFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     EmailService,
     CoursesSevice,
-    provideClientHydration()
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })
