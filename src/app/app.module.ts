@@ -12,6 +12,7 @@ import { StarComponent } from './star.component';
 import { PanelComponent } from './panel/panel.component';
 import { TestDerectiveDirective } from './test-derective.directive';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
     ResumePipe,
     PanelComponent,
     TestDerectiveDirective,
-    ContactFormComponent
+    ContactFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,

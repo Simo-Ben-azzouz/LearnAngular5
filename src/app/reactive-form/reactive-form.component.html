@@ -1,0 +1,26 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+
+    <div class="form-group">
+        <label for="username">
+            <input 
+            type="text" 
+            class="form-control"
+            id="username">
+            Username
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="password">
+            <input 
+            type="text" 
+            class="form-control"
+            id="password">
+            Password
+        </label>
+    </div>
+
+    <div class="form-group">
+        <div class="btn btn-primary">Register</div>
+    </div>
+</form>
