@@ -50,7 +50,7 @@ export class PostComponent {
 
   updatePost()
   {
-    this.http.post('https://jsonplaceholder.typicode.com/posts/'+this.post.id, this.post)
+    this.http.put('https://jsonplaceholder.typicode.com/posts/'+this.post.id, this.post)
     .subscribe( (response : any) => 
     {
       this.post.id = response.id;
@@ -64,5 +64,15 @@ export class PostComponent {
         id: 0,
       }
     this.status = true;
+  }
+
+  deletePost(post:any)
+  {
+    this.http.delete('https://jsonplaceholder.typicode.com/posts/'+this.post.id)
+    .subscribe( (response : any) => 
+    {
+      let index = this.posts.indexOf(post);
+      this.posts.splice(index,1);
+    });
   }
 }
