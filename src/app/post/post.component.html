@@ -12,7 +12,8 @@
         <textarea type="text" [(ngModel)]="post.body" name="body" class="form-control" id="body" placeholder="Body"></textarea>
     </div>
 
-    <button (click)="createPost()" class="btn btn-primary">Add</button>
+    <button (click)="createPost()" class="btn btn-primary" *ngIf="status">Add</button>
+    <button (click)="updatePost()" class="btn btn-danger" *ngIf="!status">Update</button>
 </form>
 <!-- <p>{{post | json}}</p> -->
 <ul class="list-group">
@@ -20,5 +21,8 @@
         <!-- <h2>{{post.id}}</h2> -->
         <h4>{{ post.title }}</h4>
         <p>{{ post.body }}</p>
+        <div align="right">
+            <button (click)="editPost(post)" class="btn btn-warning">Edit</button>
+        </div>
     </li>
 </ul>

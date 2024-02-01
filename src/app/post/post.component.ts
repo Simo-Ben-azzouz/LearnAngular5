@@ -8,7 +8,7 @@ import { response } from 'express';
   styleUrl: './post.component.css'
 })
 export class PostComponent {
-
+  status = true;
   posts : any[] = [];
   title: any;
   body: any;
@@ -40,5 +40,29 @@ export class PostComponent {
         id: 0,
       }
     });
+  }
+
+  editPost(post : any)
+  {
+    this.post = post
+    this.status = false;
+  }
+
+  updatePost()
+  {
+    this.http.post('https://jsonplaceholder.typicode.com/posts/'+this.post.id, this.post)
+    .subscribe( (response : any) => 
+    {
+      this.post.id = response.id;
+      this.posts.unshift(this.post);
+
+
+    });
+      this.post = {
+        title : "" ,
+        body : "",
+        id: 0,
+      }
+    this.status = true;
   }
 }
