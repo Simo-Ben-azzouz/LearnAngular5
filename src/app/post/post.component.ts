@@ -1,3 +1,4 @@
+import { ServiceService } from './../services/service.service';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { response } from 'express';
@@ -18,7 +19,7 @@ export class PostComponent  implements OnInit{
     id: 0,
   }
 
-  constructor (private http : HttpClient)
+  constructor (private postService : ServiceService )
   {
    
   }
@@ -29,7 +30,7 @@ export class PostComponent  implements OnInit{
 
   getPost()
   {
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
+    this.postService.getPost()
     .subscribe((response : any)  =>{
     this.posts = response;               
     });
@@ -37,7 +38,7 @@ export class PostComponent  implements OnInit{
 
   createPost()
   {
-    this.http.post('https://jsonplaceholder.typicode.com/posts', this.post)
+    this.postService.createPost(this.post)
     .subscribe( (response : any) => 
     {
       this.post.id = response.id;
@@ -59,7 +60,7 @@ export class PostComponent  implements OnInit{
 
   updatePost()
   {
-    this.http.put('https://jsonplaceholder.typicode.com/posts/'+this.post.id, this.post)
+    this.postService.updatePost(this.post)
     .subscribe( (response : any) => 
     {
       this.post.id = response.id;
@@ -77,7 +78,7 @@ export class PostComponent  implements OnInit{
 
   deletePost(post:any)
   {
-    this.http.delete('https://jsonplaceholder.typicode.com/posts/'+this.post.id)
+    this.postService.deletePost(post)
     .subscribe( (response : any) => 
     {
       let index = this.posts.indexOf(post);

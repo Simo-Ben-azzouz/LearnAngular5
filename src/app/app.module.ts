@@ -15,6 +15,7 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceService } from './services/service.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     EmailService,
     CoursesSevice,
+    ServiceService,
     provideClientHydration(),
   ],
   bootstrap: [AppComponent]
