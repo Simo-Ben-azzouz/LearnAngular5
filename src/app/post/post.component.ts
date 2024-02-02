@@ -1,6 +1,7 @@
 import { ServiceService } from './../services/service.service';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { error } from 'console';
 import { response } from 'express';
 
 @Component({
@@ -31,9 +32,17 @@ export class PostComponent  implements OnInit{
   getPost()
   {
     this.postService.getPost()
-    .subscribe((response : any)  =>{
+    .subscribe({
+    next :  (response : any)  =>{
+      
     this.posts = response;               
-    });
+    },
+    error: (error : any) => {
+      alert('error unexpected')
+      console.log(error);
+      
+    }
+  });
   }
 
   createPost()
