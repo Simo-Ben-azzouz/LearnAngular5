@@ -48,16 +48,21 @@ export class PostComponent  implements OnInit{
   createPost()
   {
     this.postService.createPost(this.post)
-    .subscribe( (response : any) => 
-    {
+    .subscribe({ 
+      next : (response : any) => {
       this.post.id = response.id;
       this.posts.unshift(this.post);
-
+        
       this.post = {
         title : "" ,
         body : "",
         id: 0,
-      }
+      }},
+    error: (error : any) => {
+      alert('error unexpected')
+      console.log(error);
+      
+    }
     });
   }
 
@@ -70,28 +75,33 @@ export class PostComponent  implements OnInit{
   updatePost()
   {
     this.postService.updatePost(this.post)
-    .subscribe( (response : any) => 
-    {
+    .subscribe({ 
+      next : (response : any) => {
       this.post.id = response.id;
       this.posts.unshift(this.post);
-
-
-    });
+        
       this.post = {
         title : "" ,
         body : "",
         id: 0,
-      }
+      }},
+    error: (error : any) => {
+      alert('error unexpected')
+      console.log(error);
+      
+    }
+    });
     this.status = true;
   }
 
   deletePost(post:any)
   {
     this.postService.deletePost(post)
-    .subscribe( (response : any) => 
-    {
+    .subscribe({ 
+     next : (response : any) => {
       let index = this.posts.indexOf(post);
       this.posts.splice(index,1);
+        }
     });
   }
 }
