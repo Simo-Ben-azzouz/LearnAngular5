@@ -1,8 +1,10 @@
 import { ServiceService } from './../services/service.service';
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpContext, HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { error } from 'console';
 import { response } from 'express';
+import { AppError } from '../common/app-error';
+import { NotFoundError } from 'rxjs';
 
 @Component({
   selector: 'app-post',
@@ -58,10 +60,16 @@ export class PostComponent  implements OnInit{
         body : "",
         id: 0,
       }},
-    error: (error : any) => {
-      alert('error unexpected')
-      console.log(error);
-      
+    error: (error : Response) => {
+      if(error.status === 400)
+      {
+        console.log('thanks for verify information');
+        
+      }else
+      {
+        alert('error unexpected')
+        console.log(error);
+      }
     }
     });
   }
@@ -94,14 +102,27 @@ export class PostComponent  implements OnInit{
     this.status = true;
   }
 
-  deletePost(post:any)
-  {
-    this.postService.deletePost(post)
-    .subscribe({ 
-     next : (response : any) => {
-      let index = this.posts.indexOf(post);
-      this.posts.splice(index,1);
+  deletePost(post: any) {
+    this.postService.deletePost(123)
+      .subscribe({
+        next: (response: any) => {
+          let index = this.posts.indexOf(post);
+          // if (index !== -1) {
+            this.posts.splice(index, 1);
+          // }
+        },
+        // mzl khsni n9adha
+        error: (error: AppError) => {
+          if (error instanceof NotFoundError) {
+            alert('Post already deleted');
+          } else {
+            alert('Unexpected error');
+            console.error(error);
+          }
+        },
+        complete: () => {
+          console.log('Delete request completed');
         }
-    });
+      });
   }
 }

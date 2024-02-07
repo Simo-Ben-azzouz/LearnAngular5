@@ -14,7 +14,7 @@ import { TestDerectiveDirective } from './test-derective.directive';
 import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PostComponent } from './post/post.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ServiceService } from './services/service.service';
 
 @NgModule({
@@ -34,12 +34,13 @@ import { ServiceService } from './services/service.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    // HttpClientModule
   ],
   providers: [
     EmailService,
     CoursesSevice,
     ServiceService,
+    provideHttpClient(withFetch()),
     provideClientHydration(),
   ],
   bootstrap: [AppComponent]
