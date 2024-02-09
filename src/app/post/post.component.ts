@@ -119,9 +119,6 @@ export class PostComponent  implements OnInit{
             alert('Unexpected error');
             console.error(error);
           }
-        },
-        complete: () => {
-          console.log('Delete request completed');
         }
       });
   }

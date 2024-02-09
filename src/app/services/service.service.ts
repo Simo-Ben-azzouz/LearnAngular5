@@ -1,8 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NotFoundError, catchError } from 'rxjs';
+import { NotFoundError } from 'rxjs';
 import { throwError } from 'rxjs';
+import {Observable} from 'rxjs';
 import { AppError } from '../common/app-error';
+import { catchError } from 'rxjs/operators';
+import { animate } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +34,15 @@ export class ServiceService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
-            return throwError(() => new NotFoundError);
-          }
-          else {
-            return throwError(error);
-
+            return throwError(new NotFoundError(error.message));
+          } else {
+            return throwError(AppError);
           }
         })
       );
   }
+  
+  
+  
 
 }
