@@ -5,6 +5,7 @@ import { error } from 'console';
 import { response } from 'express';
 import { AppError } from '../common/app-error';
 import { NotFoundError } from 'rxjs';
+import { BadInput } from '../common/bad-input-error';
 
 @Component({
   selector: 'app-post',
@@ -60,8 +61,8 @@ export class PostComponent  implements OnInit{
         body : "",
         id: 0,
       }},
-    error: (error : Response) => {
-      if(error.status === 400)
+    error: (error : AppError) => {
+      if(error instanceof BadInput)
       {
         console.log('thanks for verify information');
         
