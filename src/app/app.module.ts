@@ -16,6 +16,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ServiceService } from './services/service.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ServiceService } from './services/service.service';
     EmailService,
     CoursesSevice,
     ServiceService,
+    // DataService,
     provideHttpClient(withFetch()),
     provideClientHydration(),
   ],

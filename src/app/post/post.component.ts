@@ -34,7 +34,7 @@ export class PostComponent  implements OnInit{
 
   getPost()
   {
-    this.postService.getPost()
+    this.postService.getAll()
     .subscribe({
     next :  (response : any)  =>{
       
@@ -50,7 +50,7 @@ export class PostComponent  implements OnInit{
 
   createPost()
   {
-    this.postService.createPost(this.post)
+    this.postService.create(this.post)
     .subscribe({ 
       next : (response : any) => {
       this.post.id = response.id;
@@ -83,7 +83,7 @@ export class PostComponent  implements OnInit{
 
   updatePost()
   {
-    this.postService.updatePost(this.post)
+    this.postService.update(this.post)
     .subscribe({ 
       next : (response : any) => {
       this.post.id = response.id;
@@ -104,7 +104,7 @@ export class PostComponent  implements OnInit{
   }
 
   deletePost(post: any) {
-    this.postService.deletePost(123)
+    this.postService.delete(post)
       .subscribe({
         next: (response: any) => {
           let index = this.posts.indexOf(post);
