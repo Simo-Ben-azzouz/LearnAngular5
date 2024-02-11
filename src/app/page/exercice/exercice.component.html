@@ -2,6 +2,9 @@
     <div class="grid grid-cols gap-4 place-content-center h-48 ...">
         <h1 class="text-2xl">follower GITHUB :</h1>
         <hr>
-        
+        <li class="list-disc justify-center "  *ngFor="let post of posts">
+            <h4>{{ post.title }}</h4>
+            <p>{{ post.body }}</p>
+        </li>
       </div>
   </div>
