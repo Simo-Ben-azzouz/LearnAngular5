@@ -11,7 +11,7 @@ import { response } from 'express';
   providedIn: 'root'
 })
 export class DataService {
-  private urlAPI : any;
+  private urlAPI ='https://jsonplaceholder.typicode.com/posts';
   // constructor(urlAPI : any,private http: HttpClient) 
   constructor(private http: HttpClient) 
   {

@@ -4,9 +4,8 @@ import { Component, OnInit, Pipe } from '@angular/core';
 import { error } from 'console';
 import { response } from 'express';
 import { AppError } from '../common/app-error';
-import { NotFoundError, throwError } from 'rxjs';
+import { NotFoundError } from 'rxjs';
 import { BadInput } from '../common/bad-input-error';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post',
@@ -30,22 +29,23 @@ export class PostComponent  implements OnInit{
   }
   ngOnInit()
   {
-    this.getPosts();
+    this.getPost();
   }
 
-  getPosts()
+  getPost()
   {
     this.postService.getAll()
-      .subscribe({
-        next: (response: any) => {
-          this.posts = response;
-        },
-        error: (error: any) => {
-          alert('An unexpected error occurred');
-          console.error(error);
-          // You can also handle the error in a different way, such as by showing an error message to the user
-        }
-      });
+    .subscribe({
+    next :  (response : any)  =>{
+      
+    this.posts = response;               
+    },
+    error: (error : any) => {
+      // alert('error unexpected')
+      console.log(error,'error unexpected');
+      
+    }
+  });
   }
 
   createPost()
@@ -68,8 +68,8 @@ export class PostComponent  implements OnInit{
         
       }else
       {
-        alert('error unexpected')
-        console.log(error);
+        // alert('error unexpected')
+        console.log(error,'error unexpected');
       }
     }
     });
@@ -95,7 +95,9 @@ export class PostComponent  implements OnInit{
         id: 0,
       }},
     error: (error : any) => {
-      alert('error unexpected')
+      // alert('error unexpected')
+      console.log('error unexpected');
+      
       console.log(error);
       
     }
@@ -115,10 +117,12 @@ export class PostComponent  implements OnInit{
         // mzl khsni n9adha
         error: (error: AppError) => {
           if (error instanceof NotFoundError) {
-            alert('Post already deleted');
+            // alert('Post already deleted');
+            console.log('Post already deleted');
+            
           } else {
-            alert('Unexpected error');
-            console.error(error);
+            // alert('Unexpected error');
+            console.error(error,'Unexpected error');
           }
         }
       });
