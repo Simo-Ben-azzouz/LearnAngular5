@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { NotFoundError } from '../common/not-found-error';
 import { BadInput } from '../common/bad-input-error';
 import { AppError } from '../common/app-error';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class DataService {
   getAll(): Observable<any> {
     return this.http.get(this.urlAPI)
       .pipe(
+        map(response => response),
         catchError(this.handleError)
       );
   }
@@ -26,6 +28,7 @@ export class DataService {
   create(resource: any): Observable<any> {
     return this.http.post(this.urlAPI, resource)
       .pipe(
+        map(response => response),
         catchError(this.handleError)
       );
   }
@@ -33,6 +36,7 @@ export class DataService {
   update(resource: any): Observable<any> {
     return this.http.put(this.urlAPI + '/' + resource.id, resource)
       .pipe(
+        map(response => response),
         catchError(this.handleError)
       );
   }
@@ -40,6 +44,7 @@ export class DataService {
   delete(resource: any): Observable<any> {
     return this.http.delete(this.urlAPI + '/' + resource)
       .pipe(
+        map(response => response),
         catchError(this.handleError)
       );
   }

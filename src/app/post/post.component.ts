@@ -4,8 +4,9 @@ import { Component, OnInit, Pipe } from '@angular/core';
 import { error } from 'console';
 import { response } from 'express';
 import { AppError } from '../common/app-error';
-import { NotFoundError } from 'rxjs';
+import { NotFoundError, throwError } from 'rxjs';
 import { BadInput } from '../common/bad-input-error';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post',
@@ -29,23 +30,22 @@ export class PostComponent  implements OnInit{
   }
   ngOnInit()
   {
-    this.getPost();
+    this.getPosts();
   }
 
-  getPost()
+  getPosts()
   {
     this.postService.getAll()
-    .subscribe({
-    next :  (response : any)  =>{
-      
-    this.posts = response;               
-    },
-    error: (error : any) => {
-      alert('error unexpected')
-      console.log(error);
-      
-    }
-  });
+      .subscribe({
+        next: (response: any) => {
+          this.posts = response;
+        },
+        error: (error: any) => {
+          alert('An unexpected error occurred');
+          console.error(error);
+          // You can also handle the error in a different way, such as by showing an error message to the user
+        }
+      });
   }
 
   createPost()
