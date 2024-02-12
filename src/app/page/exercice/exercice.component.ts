@@ -17,20 +17,20 @@ export class ExerciceComponent {
    */
   followerService = inject(FollowerService);
 
-  posts : any[] = [];
-  title: any;
-  body: any;
-  post : any = {
-    title : "" ,
-    body : "",
-    id: 0,
-  }
+  followers : any[] = [];
+  // title: any;
+  // body: any;
+  // follower : any = {
+  //   login : "" ,
+  //   url : "",
+  //   id: 0,
+  // }
   ngOnInit()
   {
     this.followerService.getAll()
     .subscribe((response : any)  =>{
-      console.log(this.posts); // Log the posts array to the console
-      this.posts = response;
+      console.log(this.followers); // Log the posts array to the console
+      this.followers = response;
     });
   }
 

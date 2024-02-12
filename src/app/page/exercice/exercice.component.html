@@ -1,10 +1,16 @@
+<h1 class="text-5xl mb-4 text-center m-4">follower GITHUB :</h1>
+<hr> 
 <div class="container mx-auto">
-    <div class="grid grid-cols gap-4 place-content-center h-48 ...">
-        <h1 class="text-2xl">follower GITHUB :</h1>
-        <hr>
-        <li class="list-disc justify-center "  *ngFor="let post of posts">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.body }}</p>
+    <ul class="divide-y divide-gray-200" *ngFor="let follower of followers">
+        <li class="py-4"> 
+            <div class="flex items-center">
+                <img [src]="follower.avatar_url" width="100" height="100" class="rounded-full"/>
+                <div>
+                    <strong class="flex ml-3"> {{ follower.login }} </strong>
+                    <span class="ml-3"> {{ follower.html_url }} </span>
+                </div>
+            </div>
         </li>
-      </div>
+    </ul>    
   </div>
+ 

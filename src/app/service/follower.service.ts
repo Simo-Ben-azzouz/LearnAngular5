@@ -7,7 +7,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class FollowerService {
 
-  private urlAPI = 'https://jsonplaceholder.typicode.com/posts';
+  private urlAPI = 'https://api.github.com/users/Simo-Ben-azzouz/following';
   // constructor(private http : HttpClient) { }
   http = inject(HttpClient);
   getAll() {
