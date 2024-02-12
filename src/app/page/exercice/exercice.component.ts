@@ -28,9 +28,9 @@ export class ExerciceComponent {
   ngOnInit()
   {
     this.followerService.getAll()
-    .subscribe((response : any)  =>{
+    .subscribe((followers : any)  =>{
       console.log(this.followers); // Log the posts array to the console
-      this.followers = response;
+      this.followers = followers;
     });
   }
 
