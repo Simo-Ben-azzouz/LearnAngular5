@@ -3,11 +3,12 @@ import { Component, inject } from '@angular/core';
 import { FollowerService } from '../../service/follower.service';
 import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
+import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-exercice',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NavBarComponent],
   templateUrl: './exercice.component.html',
   styleUrl: './exercice.component.css'
 })
