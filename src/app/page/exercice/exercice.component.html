@@ -8,7 +8,7 @@
                 <img [src]="follower.avatar_url" width="100" height="100" class="rounded-full"/>
                 <div>
                     <strong class="flex ml-3"> {{ follower.login }} </strong>
-                    <span class="ml-3"> {{ follower.html_url }} </span>
+                    <a [routerLink]="'/following/' + follower.id" class="ml-3"> {{ follower.html_url }} </a>
                 </div>
             </div>
         </li>
