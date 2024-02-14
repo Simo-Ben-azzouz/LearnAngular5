@@ -6,7 +6,7 @@ import { ProfilFollowingComponent } from './page/profil-following/profil-followi
 
 export const routes: Routes = [
     {
-        path : '',
+        path : 'home',
         component : HomeComponent
     },
     {
