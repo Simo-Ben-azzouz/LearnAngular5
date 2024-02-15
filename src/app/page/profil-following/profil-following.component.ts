@@ -10,29 +10,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './profil-following.component.css'
 })
 export class ProfilFollowingComponent {
-id : any;
+id : number=0;
 username : any;
+type : any;
+varname : any;
+page : number=0;
 /**
  *
  */
-type : any ;
 constructor(private route : ActivatedRoute) {
   // this.id=0;
 }
 
 ngOnInit(){
-  this.route.paramMap.subscribe(
-    params  => {
-      this.id = params.get('id');
-      this.username = params.get('username');
-      
-    }
-  )
-  this.route.queryParamMap.subscribe(
-    queryParams => {
-      console.log(queryParams.get('var'));
-      
-    }
-  )
+ this.id = Number(this.route.snapshot.paramMap.get('id'));
+  this.username =this.route.snapshot.paramMap.get('username');
+  
+  this.page =Number( this.route.snapshot.queryParamMap.get('Page'));
+  this.varname = this.route.snapshot.queryParamMap.get('var');
+  this.type =this.route.snapshot.queryParamMap.get('type');
 }
 }
