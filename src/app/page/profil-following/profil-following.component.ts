@@ -15,7 +15,7 @@ username : any;
 /**
  *
  */
-
+type : any ;
 constructor(private route : ActivatedRoute) {
   // this.id=0;
 }
@@ -25,6 +25,12 @@ ngOnInit(){
     params  => {
       this.id = params.get('id');
       this.username = params.get('username');
+      
+    }
+  )
+  this.route.queryParamMap.subscribe(
+    queryParams => {
+      console.log(queryParams.get('var'));
       
     }
   )
