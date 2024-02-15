@@ -14,7 +14,7 @@ export const routes: Routes = [
         component : ExerciceComponent
     },
     {
-        path : 'following/:username',
+        path : 'following/:id/:username',
         component : ProfilFollowingComponent
     },
 
